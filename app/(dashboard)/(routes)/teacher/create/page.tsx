@@ -18,6 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import axios from "axios";
 
 const formSchema = z.object({
   title: z.string().min(1, { message: "Title is required" }),
@@ -35,10 +36,11 @@ const CreatePage = () => {
 
   const router = useRouter();
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       console.log(values);
-      router.push("/teacher/courses/123");
+      const response = await axios.post("/api/courses", values);
+      router.push(`/teacher/courses/${response.data.id}`);
       toast.success("Course created");
     } catch (error) {
       console.log("Something went wrong", error);
