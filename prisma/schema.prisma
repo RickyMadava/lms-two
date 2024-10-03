@@ -1,0 +1,65 @@
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Course{
+  id String @id @default(uuid())
+  userId String
+  title String @db.Text
+  description String? @db.Text
+  imageUrl String? @db.Text
+  price Float?
+  isPublished Boolean @default(false)
+
+  // Référence optionnelle à la catégorie à laquelle le cours appartient.
+  categoryId String?
+
+  // Relation vers le modèle Category => Un cours peut appartenir à une catégorie.
+  category Category? @relation(fields: [categoryId], references: [id])
+
+  // Relation vers plusieurs Attachement liés à ce cours.
+  attachments Attachement[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Crée un index sur categoryId pour améliorer les performances des requêtes.
+  @@index([categoryId])
+}
+
+model Category {
+  id String @id @default(uuid())
+  name String @unique
+  // Relation vers les Course, indiquant qu'une catégorie peut contenir plusieurs cours.
+  courses Course[]
+}
+
+model Attachement{
+  id String @id @default(uuid())
+  name String
+  url String @db.Text
+  
+  // Référence à l'identifiant du cours auquel cette pièce jointe est associée.
+  courseId String
+
+  //"course" est une relation du modèle "Course" du champ courseId, 
+ // qui fait référence au champ "id" du modèle Course et
+//  qui peut être supprimé une fois que le course associé est supprimé
+
+  // Relation avec le modèle Course, reliant courseId à id dans Course.
+  // La suppression d'un cours entraîne la suppression en cascade des pièces jointes associées.
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  //Crée un index sur courseId pour améliorer les performances des requêtes.
+  @@index([courseId])
+
+}
