@@ -8,16 +8,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  Mail,
-  MessageSquare,
-  Star,
-  Users,
-  Plus,
-  ChevronDown,
-  Menu,
-  Icon,
-} from "lucide-react";
+import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { BarChart, Compass, Layout, List } from "lucide-react";
 import SidebarItem from "./sidebar-item";
