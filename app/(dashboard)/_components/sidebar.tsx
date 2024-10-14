@@ -116,7 +116,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
             isOpen ? "ml-[360px]" : "ml-20"
           } p-2 bg-white rounded-2xl m-4 mt-4`}
         >
-          <main className="mb-32 h-[calc(100vh-250px)]">{children}</main>
+          <main className="mb-32">{children}</main>
         </div>
       </div>
     </TooltipProvider>

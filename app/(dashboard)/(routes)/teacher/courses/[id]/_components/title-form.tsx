@@ -56,7 +56,6 @@ const TitleForm = ({ initialData, courseId }: TitleFromProps) => {
       toggleEdit();
       router.refresh();
     } catch (error) {
-      console.log("ERROR__", error);
       toast.error("Something went wrong");
     }
   };
@@ -64,7 +63,7 @@ const TitleForm = ({ initialData, courseId }: TitleFromProps) => {
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="flex font-medium items-center justify-between">
-        Coure title
+        Course title
         <Button variant={"ghost"} onClick={toggleEdit}>
           {isEditing ? (
             <>Cancel</>

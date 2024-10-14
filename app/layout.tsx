@@ -29,7 +29,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased pt-[80px] bg-no-repeat bg-gradient-to-tl from-yellow-200 via-emerald-200 to-yellow-200`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased pt-[80px] bg-gradient-to-tl from-yellow-200 via-emerald-200 to-yellow-200`}
         >
           {children}
           <Toaster richColors position="top-center" />

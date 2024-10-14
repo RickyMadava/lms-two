@@ -65,7 +65,7 @@ const DescriptionForm = ({ initialData, courseId }: DescriptionFormProps) => {
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="flex font-medium items-center justify-between">
-        Coure description
+        Course description
         <Button variant={"ghost"} onClick={toggleEdit}>
           {isEditing ? (
             <>Cancel</>
