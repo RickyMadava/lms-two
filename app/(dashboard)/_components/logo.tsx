@@ -7,7 +7,7 @@ const Logo = ({ className, size }: { className?: string; size?: number }) => {
         height={size || 130}
         width={size || 130}
         alt="logo"
-        src="/novity-labs.png"
+        src="/team-labs.png"
       />
     </div>
   );
