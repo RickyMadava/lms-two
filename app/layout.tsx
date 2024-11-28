@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { ConfettiProvider } from "@/components/providers/confetti-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,6 +32,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased pt-[80px] bg-gradient-to-tl from-yellow-200 via-emerald-200 to-yellow-200`}
         >
+          <ConfettiProvider />
           {children}
           <Toaster richColors position="top-center" />
         </body>
