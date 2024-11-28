@@ -114,7 +114,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
         <div
           className={`transition-all duration-300 ease-in-out ${
             isOpen ? "ml-[360px]" : "ml-20"
-          } p-2 bg-white rounded-2xl m-4 mt-4`}
+          } p-2 bg-white/90 rounded-2xl m-4 mt-[80px] `}
         >
           <main className="mb-32">{children}</main>
         </div>
