@@ -6,6 +6,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
 }
 
 model Course{
@@ -34,6 +35,7 @@ model Course{
 
   // Crée un index sur categoryId pour améliorer les performances des requêtes.
   @@index([categoryId])
+  @@fulltext([title])
 }
 
 model Category {
